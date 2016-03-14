@@ -10,6 +10,7 @@ before_install:
 script:
   - docker run -d -v $TRAVIS_BUILD_DIR:/documents/ --name asciidoc-to-html asciidoctor/docker-asciidoctor asciidoctor **/*.adoc -D /documents/output
   - docker run -d -v $TRAVIS_BUILD_DIR:/documents/ --name asciidoc-to-pdf asciidoctor/docker-asciidoctor asciidoctor-pdf **/*.adoc -D /documents/output/pdf
+  - docker logs asciidoc-to-pdf
 
 after_error:
   - docker logs asciidoc-to-html
@@ -20,7 +21,6 @@ after_failure:
   - docker logs asciidoc-to-pdf
   
 after_success:
-  - docker logs asciidoc-to-pdf ; docker logs asciidoc-to-html
   - cd output ; git init
   - git config user.name "${GH_USER_NAME}"
   - git config user.email "{GH_USER_EMAIL}"
