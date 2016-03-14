@@ -20,7 +20,7 @@ after_failure:
   - docker logs asciidoc-to-pdf
   
 after_success:
-  - cd output ; git init
+  - cd output ; git init ; ls -al
   - git config user.name "${GH_USER_NAME}"
   - git config user.email "{GH_USER_EMAIL}"
   - git add . ; git commit -m "Deploy to GitHub Pages"
