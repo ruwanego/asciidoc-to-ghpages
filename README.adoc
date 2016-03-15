@@ -1,3 +1,3 @@
 = AsciiDoc sources to HTML files published on gh-pages with Docker / Travis CI
 
-How to convert AsciiDoc to HTML files and publish to master with Travis CI.
+How to convert AsciiDoc to HTML files and publish to gh-pages with Travis CI.

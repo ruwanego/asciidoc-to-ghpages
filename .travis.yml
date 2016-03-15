@@ -14,13 +14,14 @@ script:
 after_error:
   - docker logs asciidoc-to-html
   - docker logs asciidoc-to-pdf
-  
+
 after_failure:
   - docker logs asciidoc-to-html
   - docker logs asciidoc-to-pdf
-  
+
 after_success:
-  - cd output ; git init
+  - cd output ; mv README.html index.html ; cp -R ../images images
+  - git init
   - git config user.name "${GH_USER_NAME}"
   - git config user.email "{GH_USER_EMAIL}"
   - git add . ; git commit -m "Deploy to GitHub Pages"
