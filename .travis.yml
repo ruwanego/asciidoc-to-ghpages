@@ -4,12 +4,12 @@ services:
   - docker
 
 before_install:
+  - mkdir -p output
   - docker pull asciidoctor/docker-asciidoctor
 
 script:
-  - docker run -v $TRAVIS_BUILD_DIR:/documents/ --name asciidoc-to-html asciidoctor/docker-asciidoctor asciidoctor -D /var/tmp/ *.adoc
-  - docker logs asciidoc-to-html
-  - docker run -v $TRAVIS_BUILD_DIR:/documents/ --name asciidoc-to-pdf asciidoctor/docker-asciidoctor asciidoctor-pdf -D /var/tmp/ demo.adoc
+  - docker run -v $TRAVIS_BUILD_DIR:/documents/ --name asciidoc-to-html asciidoctor/docker-asciidoctor asciidoctor -D /documents/output *.adoc
+  - docker run -v $TRAVIS_BUILD_DIR:/documents/ --name asciidoc-to-pdf asciidoctor/docker-asciidoctor asciidoctor-pdf -D /documents/output *.adoc
 
 after_error:
   - docker logs asciidoc-to-html
@@ -20,7 +20,7 @@ after_failure:
   - docker logs asciidoc-to-pdf
 
 after_success:
-  - cd /var/tmp ; mv README.html index.html ; cp -R /documents/images /var/tmp/images
+  - cd output ; mv README.html index.html ; cp -R ../images images
   - git init
   - git config user.name "${GH_USER_NAME}"
   - git config user.email "{GH_USER_EMAIL}"
