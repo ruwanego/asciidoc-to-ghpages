@@ -19,4 +19,4 @@ This blog post describes the workflow used to do it:
 
 [[asciidoc_ghpages_travis_docker]]
 .Convert your AsciiDoc files and Publish the HTML/PDF output to GH Pages thanks to Travis and Asciidoctor with Docker
-image::{cover-asciidoc-ghpages}}[AsciiDoc to Github Pages with Travis and Docker Asciidoctor,950]
+image::{cover-asciidoc-ghpages}[AsciiDoc to Github Pages with Travis and Docker Asciidoctor,950]
