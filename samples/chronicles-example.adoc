@@ -6,6 +6,7 @@ team must conquer and vanquish on their journey to discovering open source's tru
 power.
 :doctype: book
 // Settings:
+:imagesdir: images
 :compat-mode:
 :experimental:
 :icons: font
